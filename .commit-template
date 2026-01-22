@@ -1,0 +1,32 @@
+# [<tag>] (When applying this commit, it will...) <subject> (Maximum 72 characters)
+# |<----   Preferably up to 50 characters   --->|<------------------->|
+# Example:
+# [feat] Introduction of automated commit messages
+
+# (Optional) Explain why this change was made
+# |<----   Try to limit each line to a maximum of 72 characters  ---->|
+
+# (Optional) Provide links or identifiers for relevant tickets, tasks, or other resources
+# Example: Github issue #23
+
+# --- COMMIT END ---
+# The tag can be
+#    feat     (new functionality)
+#    fix      (bug fix)
+#    refactor (code refactoring)
+#    style    (formatting, missing indents, etc.; no production code changes)
+#    doc      (documentation updates)
+#    test     (adding or refactoring tests; no production code changes)
+#    version  (version bump/release; no production code changes)
+#    license  (licensing changes; no production code changes)
+#    hack     (temporary solution; please avoid it)
+#    defaults (default value changes)
+
+# --------------------
+# Remember:
+#   * The subject line should start with a capital letter.
+#   * Do not end the subject line with a period.
+#   * Separate the subject line from the body description with a blank line.
+#   * Use the description to explain what, why, and how.
+#   * You can create lists using "-" or "*" at the start of each line in the description.
+# --------------------

@@ -1,0 +1,42 @@
+{
+  "name": "artifus-mini-app",
+  "version": "0.0.1",
+  "description": "SDK for developing mini-apps within the Artifus ecosystem",
+  "author": "Artifus",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/artifus/artifus-mini-app.git"
+  },
+  "bugs": {
+    "url": "https://github.com/artifus/artifus-mini-app/issues"
+  },
+  "homepage": "https://github.com/artifus/artifus-mini-app#readme",
+  "keywords": [
+    "artifus",
+    "mini-app",
+    "sdk",
+    "webapp"
+  ],
+  "type": "module",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    },
+    "./iife": "./dist/index.iife.js"
+  },
+  "files": ["dist"],
+  "scripts": {
+    "build": "tsup",
+    "build:watch": "tsup --watch"
+  },
+  "devDependencies": {
+    "tsup": "^8.5.1",
+    "typescript": "^5.9.3"
+  }
+}
