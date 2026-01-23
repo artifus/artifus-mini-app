@@ -28,7 +28,7 @@
       "import": "./dist/index.js",
       "require": "./dist/index.cjs"
     },
-    "./iife": "./dist/index.iife.js"
+    "./iife": "./dist/artifus-web-app.js"
   },
   "files": ["dist"],
   "scripts": {

@@ -13,14 +13,14 @@ export default defineConfig([
 
   {
     entry: {
-      index: 'src/iife.ts'
+      'artifus-web-app': 'src/iife.ts'
     },
     format: ['iife'],
     globalName: 'Artifus',
     outDir: 'dist',
     outExtension() {
       return {
-        js: '.iife.js',
+        js: '.js',
       }
     },
     sourcemap: true,

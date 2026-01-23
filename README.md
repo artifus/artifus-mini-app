@@ -11,7 +11,7 @@ npm install artifus-mini-app
 Or using CDN (IIFE build):
 
 ```html
-<script src="https://unpkg.com/artifus-mini-app/dist/index.iife.js"></script>
+<script src="https://unpkg.com/artifus-mini-app@0.0.1/dist/artifus-web-app.js"></script>
 <script>
   Artifus.WebApp.ready();
 </script>
