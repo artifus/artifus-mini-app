@@ -33,6 +33,19 @@ WebApp.ready();
 Artifus.WebApp.ready();
 ```
 
+### Event Model
+
+The SDK communicates with the host container via `postMessage`. When running inside an iframe,
+incoming messages from the parent window are parsed and dispatched to event subscribers.
+
+```typescript
+import { WebApp, MiniAppEventName } from 'artifus-mini-app';
+
+WebApp.onEvent(MiniAppEventName.CLOSE, (event) => {
+  console.log('Closing', event.timestamp);
+});
+```
+
 ### Initialization Data
 
 The SDK automatically parses data from the URL hash.
@@ -67,14 +80,12 @@ WebApp.HapticFeedback.notificationOccurred('success');
 WebApp.HapticFeedback.selectionChanged();
 ```
 
-### Events
+### Exports
 
-You can subscribe to internal SDK events:
+The package exports `WebApp` and all TypeScript types from `src/types.ts`:
 
 ```typescript
-WebApp.onEvent('close', () => {
-  console.log('App is closing');
-});
+import { WebApp, MiniAppEventName, MiniWebAppUser } from 'artifus-mini-app';
 ```
 
 ## API
@@ -90,12 +101,38 @@ WebApp.onEvent('close', () => {
 | `viewportHeight` | Current viewport height. |
 | `colorScheme` | Color scheme (`light` or `dark`). |
 
+### Event Names
+
+| Name | Description |
+| --- | --- |
+| `back_button_pressed` | Triggered when the container signals a back action. |
+| `back_button_hide` | Sent when `BackButton.hide()` is called. |
+| `back_button_show` | Sent when `BackButton.show()` is called. |
+| `close` | Sent when `WebApp.close()` is called. |
+| `ready` | Sent when `WebApp.ready()` is called. |
+| `haptic_impact_occurred` | Sent when `HapticFeedback.impactOccurred()` is called. |
+| `haptic_notification_occurred` | Sent when `HapticFeedback.notificationOccurred()` is called. |
+| `haptic_selection_changed` | Sent when `HapticFeedback.selectionChanged()` is called. |
+
+### Notes
+
+- `disableVerticalSwipes`, `expand`, `setHeaderColor`, `setBackgroundColor`, `openTelegramLink`,
+  `openLink`, `enableClosingConfirmation`, `disableClosingConfirmation` are placeholders and
+  currently no-op in this SDK.
+- The event bridge expects JSON-serialized events exchanged with the parent window via `postMessage`.
+
 ## Building
 
 If you want to build the SDK locally:
 
 ```bash
 npm run build
+```
+
+To rebuild on file changes:
+
+```bash
+npm run build:watch
 ```
 
 The build results will be available in the `dist/` directory.
