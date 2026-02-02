@@ -15,7 +15,10 @@ export interface WebApp {
   BackButton: BackButton;
   openLink: (link: string) => void;
   openTelegramLink: (link: string) => void;
-  openInvoice: (url: string, callback?: (result: unknown) => void) => void;
+  openInvoice: (
+    url: string,
+    callback?: (status: InvoiceStatuses) => unknown
+  ) => void;
 
   enableClosingConfirmation: VoidFunction;
   disableClosingConfirmation: VoidFunction;
