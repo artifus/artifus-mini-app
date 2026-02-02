@@ -1,6 +1,6 @@
 {
   "name": "artifus-mini-app",
-  "version": "0.0.1",
+  "version": "0.1.1",
   "description": "SDK for developing mini-apps within the Artifus ecosystem",
   "author": "Artifus",
   "license": "MIT",
