@@ -97,3 +97,5 @@ export interface MiniAppEvent {
 }
 
 export type MiniAppEventCallback = (event: MiniAppEvent) => void;
+
+export type InvoiceStatuses = "pending" | "failed" | "cancelled" | "paid"

@@ -1,11 +1,14 @@
-import {MiniAppEventName} from './types'
+import {InvoiceStatuses, MiniAppEventName} from './types'
 import {getInvoiceSlugFromUrl} from './url'
 import {onEvent, postEvent} from './events'
 
 export function createInvoiceModule() {
-  const webAppInvoices: Record<string, { url: string; callback?: (result: unknown) => void }> = {}
+  const webAppInvoices: Record<string, { url: string; callback?: (status: InvoiceStatuses) => unknown }> = {}
 
-  const openInvoice = (url: string, callback?: (result: unknown) => void) => {
+  const openInvoice = (
+    url: string,
+    callback?: (status: InvoiceStatuses) => unknown,
+  ): void => {
     const slug = getInvoiceSlugFromUrl(url)
     if (!slug) {
       console.error('[Artifus.WebApp] Invoice url is invalid', url)
@@ -26,7 +29,7 @@ export function createInvoiceModule() {
   }
 
   onEvent(MiniAppEventName.INVOICE_CLOSED, (event) => {
-    const payload = event.payload as { slug?: string } | undefined
+    const payload = event.payload as { slug?: string; status: InvoiceStatuses } | undefined
     const slug = payload?.slug
     if (!slug) return
 
@@ -35,7 +38,7 @@ export function createInvoiceModule() {
 
     delete webAppInvoices[slug]
     try {
-      entry.callback?.(event.payload)
+      entry.callback?.(event.payload.status)
     } catch {
       // ignore
     }
