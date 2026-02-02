@@ -42,3 +42,14 @@ export function urlParseHashParams(locationHash: string): Record<string, string 
   for (const k in queryParams) params[k] = queryParams[k];
   return params;
 }
+
+export function getInvoiceSlugFromUrl(url: string): string | undefined {
+  try {
+    const parsed = new URL(url, window.location.origin);
+    const isValidProtocol = parsed.protocol === "http:" || parsed.protocol === "https:";
+    if (!isValidProtocol || parsed.hostname !== "artifus.com") return undefined;
+    return parsed.searchParams.get("invoice") || undefined;
+  } catch {
+    return undefined;
+  }
+}

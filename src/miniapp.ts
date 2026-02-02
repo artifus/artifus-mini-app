@@ -4,6 +4,7 @@ import {createHapticFeedback} from './hapticFeedback'
 import {getInitParamsFromHash, getLocationHashSafe, parseInitDataUnsafe} from './initData'
 import {offEvent, onEvent, postEvent, receiveEvent} from './events'
 import {MiniAppEventName} from './types'
+import {createInvoiceModule} from './invoice'
 
 function setupIframeListener() {
   try {
@@ -20,6 +21,8 @@ function setupIframeListener() {
 }
 
 setupIframeListener()
+
+const {openInvoice} = createInvoiceModule()
 
 const initParams = getInitParamsFromHash(getLocationHashSafe())
 const initData = initParams.artifusMiniAppData || ''
@@ -62,6 +65,7 @@ export const WebApp: WebAppType = {
   openLink: (_link) => {
     // TODO
   },
+  openInvoice,
 
   enableClosingConfirmation: () => {
     // TODO

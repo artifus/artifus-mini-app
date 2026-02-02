@@ -15,6 +15,7 @@ export interface WebApp {
   BackButton: BackButton;
   openLink: (link: string) => void;
   openTelegramLink: (link: string) => void;
+  openInvoice: (url: string, callback?: (result: unknown) => void) => void;
 
   enableClosingConfirmation: VoidFunction;
   disableClosingConfirmation: VoidFunction;
@@ -85,6 +86,8 @@ export enum MiniAppEventName {
   HAPTIC_IMPACT_OCCURRED = 'haptic_impact_occurred',
   HAPTIC_NOTIFICATION_OCCURRED = 'haptic_notification_occurred',
   HAPTIC_SELECTION_CHANGED = 'haptic_selection_changed',
+  OPEN_INVOICE = 'open_invoice',
+  INVOICE_CLOSED = 'invoice_closed',
 }
 
 export interface MiniAppEvent {
